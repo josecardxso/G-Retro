@@ -1,0 +1,53 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": [
+    "**/.env.*local"
+  ],
+  "pipeline": {
+    "generate": {
+      "dependsOn": [
+        "^generate"
+      ],
+      "outputs": []
+    },
+    "check": {
+      "dependsOn": [
+        "generate"
+      ],
+      "outputs": []
+    },
+    "build": {
+      "dependsOn": [
+        "generate",
+        "check"
+      ],
+      "outputs": [
+        "dist"
+      ]
+    },
+    "docker-build": {
+      "dependsOn": []
+    },
+    "docker-up": {
+      "dependsOn": [
+        "docker-build"
+      ],
+      "cache": false
+    },
+    "docker":{
+      "dependsOn": [
+        "docker-up"
+      ]
+    },
+    "dev": {
+      "dependsOn": [
+        "docker"
+      ],
+      "cache": false
+    },
+    "start":{
+      "dependsOn": ["dev"],
+      "persistent": true
+    }
+  }
+}

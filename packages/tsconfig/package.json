@@ -1,0 +1,11 @@
+{
+  "name": "@g-retro/tsconfig",
+  "version": "1.0.0",
+  "private": true,
+  "files": [
+    "base.json"
+  ],
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.2"
+  }
+}
